@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pharmacy:</strong>
+  <%= contact_person.pharmacy %>
+</p>
+
+<p>
+  <strong>Salutation:</strong>
+  <%= contact_person.salutation %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= contact_person.title %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= contact_person.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= contact_person.last_name %>
+</p>
+
+<p>
+  <strong>Name addition:</strong>
+  <%= contact_person.name_addition %>
+</p>
+
+<%= link_to 'Edit', edit_contact_person_path(contact_person) %> |
+<%= link_to 'Back', contact_people_path %>

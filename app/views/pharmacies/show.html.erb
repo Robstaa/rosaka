@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pharmacy.name %>
+</p>
+
+<p>
+  <strong>Street name:</strong>
+  <%= @pharmacy.street_name %>
+</p>
+
+<p>
+  <strong>House number:</strong>
+  <%= @pharmacy.house_number %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @pharmacy.postal_code %>
+</p>
+
+<p>
+  <strong>Cent cost per phone call:</strong>
+  <%= @pharmacy.cent_cost_per_phone_call %>
+</p>
+
+<p>
+  <strong>Fax number:</strong>
+  <%= @pharmacy.fax_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @pharmacy.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @pharmacy.website %>
+</p>
+
+<p>
+  <strong>Service number:</strong>
+  <%= @pharmacy.service_number %>
+</p>
+
+<p>
+  <strong>Facebook profile:</strong>
+  <%= @pharmacy.facebook_profile %>
+</p>
+
+<%= link_to 'Edit', edit_pharmacy_path(@pharmacy) %> |
+<%= link_to 'Back', pharmacies_path %>
+
+<h1>HIER DIE KONTAKTPERSON</h1>
+
+<%= render file: 'contact_people/show.html.erb', locals: {contact_person: @contact_people.first} %>

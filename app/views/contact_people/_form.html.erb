@@ -1,0 +1,47 @@
+<%= form_with(model: contact_person, local: true) do |form| %>
+  <% if contact_person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h2>
+
+      <ul>
+      <% contact_person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pharmacy_id %>
+    <%= form.text_field :pharmacy_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salutation %>
+    <%= form.text_field :salutation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_addition %>
+    <%= form.text_field :name_addition %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
