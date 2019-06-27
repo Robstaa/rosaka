@@ -1,47 +1,60 @@
-<%= form_with(model: contact_person, local: true) do |form| %>
-  <% if contact_person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h2>
+<%= form_for contact_person, :html => { :class => "form-horizontal contact_person" } do |f| %>
 
-      <ul>
-      <% contact_person.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if contact_person.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% contact_person.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :pharmacy_id %>
-    <%= form.text_field :pharmacy_id %>
+  <div class="form-group">
+    <%= f.label :salutation, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :salutation, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:salutation) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :first_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :first_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:first_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :last_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:last_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name_addition, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name_addition, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name_addition) %>
   </div>
 
-  <div class="field">
-    <%= form.label :salutation %>
-    <%= form.text_field :salutation %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name_addition %>
-    <%= form.text_field :name_addition %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

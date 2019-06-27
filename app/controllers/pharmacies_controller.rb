@@ -11,6 +11,7 @@ class PharmaciesController < ApplicationController
   # GET /pharmacies/1.json
   def show
     @contact_people = ContactPerson.where(pharmacy_id: @pharmacy.id)
+    @business_hours = BusinessHour.where(pharmacy_id: @pharmacy.id)
   end
 
   # GET /pharmacies/new

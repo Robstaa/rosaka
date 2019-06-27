@@ -35,3 +35,11 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+<% @business_hours.each do |business_hour| %>
+  <%= render 'business_hours/form', business_hour: business_hour %>
+<% end %>
+
+<% @contact_people.each do |contact_person| %>
+  <%= render 'contact_people/form', contact_person: contact_person %>
+<% end %>
