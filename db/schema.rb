@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2019_06_20_161452) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contact_people", force: :cascade do |t|
-    t.integer "pharmacy_id"
+    t.bigint "pharmacy_id"
     t.string "salutation"
     t.string "title"
     t.string "first_name"
@@ -39,4 +42,5 @@ ActiveRecord::Schema.define(version: 2019_06_20_161452) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contact_people", "pharmacies"
 end
