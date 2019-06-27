@@ -4,7 +4,8 @@ class BusinessHoursController < ApplicationController
   # GET /business_hours
   # GET /business_hours.json
   def index
-    @business_hours = BusinessHour.all
+    @pharmacy = Pharmacy.find(params[:pharmacy_id])
+    @business_hours = @pharmacy.business_hours
   end
 
   # GET /business_hours/1
@@ -12,17 +13,13 @@ class BusinessHoursController < ApplicationController
   def show
   end
 
-  # GET /business_hours/new
   def new
     @business_hour = BusinessHour.new
   end
 
-  # GET /business_hours/1/edit
   def edit
   end
 
-  # POST /business_hours
-  # POST /business_hours.json
   def create
     @business_hour = BusinessHour.new(business_hour_params)
 
