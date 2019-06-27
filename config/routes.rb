@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :campaigns do
     member do
       post 'add_product'
+      delete 'remove_product'
     end
   end
 
