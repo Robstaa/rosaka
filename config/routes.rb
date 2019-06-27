@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :products
+  resources :campaigns do
+    member do
+      post 'add_product'
+    end
+  end
   resources :business_hours
   resources :contact_people
   resources :pharmacies
