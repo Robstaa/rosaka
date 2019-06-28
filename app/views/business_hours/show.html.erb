@@ -15,11 +15,11 @@
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              business_hours_path, :class => 'btn btn-default'  %>
+              pharmacy_business_hours_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_business_hour_path(@business_hour), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              business_hour_path(@business_hour),
+              pharmacy_business_hour_path(@business_hour),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
