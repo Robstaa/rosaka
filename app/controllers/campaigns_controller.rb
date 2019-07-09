@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :add_product]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :add_product, :remove_product]
 
   # GET /campaigns
   # GET /campaigns.json
@@ -11,6 +11,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @products = Product.all
+    @orders = Order.where(campaign_id: @campaign.id)
   end
 
   # GET /campaigns/new
@@ -65,6 +66,15 @@ class CampaignsController < ApplicationController
   def add_product
     @product = Product.find(params[:product_id])
     CampaignProduct.create(product: @product, campaign: @campaign)
+    redirect_to campaign_path(@campaign)
+  end
+
+
+  def remove_product
+    @product = Product.find(params[:product_id])
+    @campaign_product = CampaignProduct.where(product: @product, campaign: @campaign)
+    CampaignProduct.destroy(@campaign_product.first.id)
+    redirect_to campaign_path(@campaign)
   end
 
   private

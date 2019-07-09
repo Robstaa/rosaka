@@ -10,6 +10,15 @@
   </head>
 
   <body>
+
+    <%= nav_bar :static => :top, :brand => "RoSaKa" do %>
+      <% menu_group :pull => :right do %>
+          <%= menu_item "Campaigns", campaigns_path %>
+          <%= menu_item "Products", products_path %>
+          <%= menu_item "Pharmacies", pharmacies_path %>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
