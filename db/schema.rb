@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_143645) do
+ActiveRecord::Schema.define(version: 2019_06_28_212049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,25 @@ ActiveRecord::Schema.define(version: 2019_06_27_143645) do
     t.index ["pharmacy_id"], name: "index_contact_people_on_pharmacy_id"
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "campaign_product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_product_id"], name: "index_order_details_on_campaign_product_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "pharmacy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "campaign_id"
+    t.index ["campaign_id"], name: "index_orders_on_campaign_id"
+    t.index ["pharmacy_id"], name: "index_orders_on_pharmacy_id"
+  end
+
   create_table "pharmacies", force: :cascade do |t|
     t.string "name"
     t.string "street_name"
@@ -80,4 +99,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_143645) do
   add_foreign_key "campaign_products", "campaigns"
   add_foreign_key "campaign_products", "products"
   add_foreign_key "contact_people", "pharmacies"
+  add_foreign_key "order_details", "campaign_products"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "orders", "campaigns"
+  add_foreign_key "orders", "pharmacies"
 end

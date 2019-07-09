@@ -43,7 +43,14 @@
     <% end %>
   </div>
   <div id="fragment-3">
-    
+    <% @orders.each do |order| %>
+      <dd>
+        <%= order.pharmacy.name %>
+        <%= link_to 'View Order', 
+            pharmacy_path(order.pharmacy_id),
+            :class => 'btn btn-default btn-xs' %>
+      </dd>
+    <% end %>
   </div>
 </div>
 

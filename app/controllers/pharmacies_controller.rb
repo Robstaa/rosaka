@@ -12,6 +12,8 @@ class PharmaciesController < ApplicationController
   def show
     @contact_people = ContactPerson.where(pharmacy_id: @pharmacy.id)
     @business_hours = BusinessHour.where(pharmacy_id: @pharmacy.id)
+    @orders = Order.where(pharmacy_id: @pharmacy.id)
+    @order_details = get_order_details
   end
 
   # GET /pharmacies/new
@@ -64,6 +66,14 @@ class PharmaciesController < ApplicationController
   end
 
   private
+
+    def get_order_details
+      @order_details = []
+      @orders.each do |order|
+        @order_details.push(OrderDetail.where(order_id: order.id))
+      end
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_pharmacy
       @pharmacy = Pharmacy.find(params[:id])

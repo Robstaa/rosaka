@@ -11,6 +11,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @products = Product.all
+    @orders = Order.where(campaign_id: @campaign.id)
   end
 
   # GET /campaigns/new

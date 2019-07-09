@@ -8,6 +8,7 @@
     <li><a href="#fragment-1">Information</a></li>
     <li><a href="#fragment-2">Business Hours</a></li>
     <li><a href="#fragment-3">Contact People</a></li>
+    <li><a href="#fragment-4">Orders</a></li>
   </ul>
   <div id="fragment-1">
     <dl class="dl-horizontal">
@@ -41,16 +42,28 @@
       <%= render 'contact_people/form', contact_person: contact_person, pharmacy: @pharmacy  %>
     <% end %>
   </div>
+  <div id="fragment-4">
+    
+    <% @orders.each do |order| %>
+      <dt><strong>
+        <%= order.campaign.name %>
+      </strong></dt>
+        <%  order.order_details.each do |order_detail| %>
+          <dd>
+            <%= render 'order_details/form', 
+                order_detail: order_detail,
+                product_name: order_detail.campaign_product.product.name %>
+          </dd>
+        <% end %>
+    <% end %>
+
+    <%= link_to 'Create Order',
+        new_order_path,
+        :class => 'btn btn-default' %>
+  </div>
 </div>
 
 <br>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               pharmacies_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_pharmacy_path(@pharmacy), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              pharmacy_path(@pharmacy),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>

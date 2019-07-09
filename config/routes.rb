@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       delete 'remove_product'
     end
   end
+  resources :orders
+  resources :order_details
 
   root to: 'pharmacies#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
